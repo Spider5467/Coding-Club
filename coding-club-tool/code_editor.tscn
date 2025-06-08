@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs32ak61qrk25"]
+
+[ext_resource type="Script" uid="uid://q8fnf1g4m5y3" path="res://compile_code.gd" id="1_2bnu2"]
+[ext_resource type="Texture2D" uid="uid://dtqvikfcem4jd" path="res://hello-world.png" id="1_uoi7k"]
+[ext_resource type="Theme" uid="uid://cdaaf1huwjhn6" path="res://new_theme.tres" id="1_wbhed"]
+[ext_resource type="Texture2D" uid="uid://ds2yk7ykyq1yk" path="res://paper.png" id="3_mjoov"]
+
+[node name="code editor" type="Node"]
+script = ExtResource("1_2bnu2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TabContainer" type="TabContainer" parent="Control"]
+layout_mode = 0
+offset_right = 514.0
+offset_bottom = 647.0
+theme = ExtResource("1_wbhed")
+current_tab = 0
+drag_to_rearrange_enabled = true
+
+[node name="HelloWorld" type="TabBar" parent="Control/TabContainer"]
+layout_mode = 2
+theme = ExtResource("1_wbhed")
+current_tab = 0
+clip_tabs = false
+max_tab_width = 16
+tab_count = 1
+tab_0/icon = ExtResource("1_uoi7k")
+metadata/_tab_index = 0
+
+[node name="CodeEdit" type="CodeEdit" parent="Control/TabContainer/HelloWorld"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 512.0
+offset_bottom = 614.0
+text = "extends Node
+
+func  _ready():
+	print(\"hello_world\")"
+placeholder_text = "Type here"
+
+[node name="New_Script" type="TabBar" parent="Control/TabContainer"]
+visible = false
+layout_mode = 2
+current_tab = 0
+tab_count = 1
+tab_0/icon = ExtResource("3_mjoov")
+metadata/_tab_index = 1
+
+[node name="CodeEdit2" type="CodeEdit" parent="Control/TabContainer/New_Script"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 31.0
+offset_right = 512.0
+offset_bottom = 645.0
+text = "extends Node
+
+func  _ready():
+	pass
+
+func _proccess():
+	pass
+	"
+placeholder_text = "CODE HERE"
+delimiter_strings = Array[String](["\" \"", "' '"])
